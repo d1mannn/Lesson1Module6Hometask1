@@ -8,6 +8,7 @@ int length = size, task;
 int ShiftRight3(int *a, int *b, int *c);
 int ShiftLeft3(int *a, int *b, int *c);
 int IsLeapYear(int year);
+int MonthDays(int month, int year);
 int main()
 {
 	setlocale(LC_ALL, "Rus");
@@ -81,6 +82,14 @@ int main()
 				/*4.	Используя функцию IsLeapYear из задания 3, описать функцию MonthDays(M, Y) целого типа,
 					которая возвращает количество дней для M - го месяца года Y(1 ≤ M ≤ 12, Y > 0 — целые числа).
 					Вывести значение функции MonthDays для данного года Y и месяцев M1, M2, M3.*/
+				int year, month;
+				cout << "Введите год - ";
+				cin >> year;
+				cout << "Введите месяц - ";
+				cin >> month;
+				IsLeapYear(year);
+				MonthDays(month, year);
+				
 			} break;
 		}
 	} while (task > 0);
@@ -110,4 +119,19 @@ int IsLeapYear(int year)
 		return 1;
 	else
 		return 0;
+}
+
+int MonthDays(int month, int year)
+{
+	if (month == 4 || month == 6 || month == 9 || month == 11)
+		return 30;
+	else if (month == 2)
+	{
+		if (IsLeapYear(year) == 1)
+			return 29;
+		else
+			return 28;
+	}
+	else
+		return 31;
 }
