@@ -9,6 +9,7 @@ int ShiftRight3(int *a, int *b, int *c);
 int ShiftLeft3(int *a, int *b, int *c);
 int IsLeapYear(int year);
 int MonthDays(int month, int year);
+int PreviousDate(int day, int month, int year);
 int main()
 {
 	setlocale(LC_ALL, "Rus");
@@ -89,7 +90,26 @@ int main()
 				cin >> month;
 				IsLeapYear(year);
 				MonthDays(month, year);
+				cout << "Дней в " << month << "-м месяце - " << MonthDays(month, year) << endl;
 				
+			} break;
+
+			case 5:
+			{
+				/*5.	Используя функцию MonthDays из задания 4, описать процедуру PrevDate(D, M, Y), 
+					которая по информации о правильной дате, включаю - щей день D, 
+					номер месяца M и год Y, определяет предыдущую дату
+					(пара - метры целого типа D, M, Y являются одновременно входными и выходными).
+					Применить процедуру PrevDate к трем исходным датам и вывести полученные значения предыдущих дат*/
+				int day, month, year;
+				cout << "Введите дату - ";
+				cin >> day;
+				cout << "Введите месяц - ";
+				cin >> month;
+				cout << "Введите год - ";
+				cin >> year;
+				PreviousDate(day, month, year);
+
 			} break;
 		}
 	} while (task > 0);
@@ -134,4 +154,10 @@ int MonthDays(int month, int year)
 	}
 	else
 		return 31;
+}
+
+int PreviousDate(int day, int month, int year)
+{
+	
+	return 0;
 }
