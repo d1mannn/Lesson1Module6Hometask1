@@ -2,14 +2,13 @@
 #include <stdio.h>
 #include <time.h>
 #include <locale.h>
-#define size 10
 using namespace std;
-int length = size, task;
+int task;
 int ShiftRight3(int *a, int *b, int *c);
 int ShiftLeft3(int *a, int *b, int *c);
 int IsLeapYear(int year);
 int MonthDays(int month, int year);
-int PreviousDate(int day, int month, int year);
+void PreviousDate(int year, int month, int day);
 int main()
 {
 	setlocale(LC_ALL, "Rus");
@@ -102,13 +101,13 @@ int main()
 					(пара - метры целого типа D, M, Y являются одновременно входными и выходными).
 					Применить процедуру PrevDate к трем исходным датам и вывести полученные значения предыдущих дат*/
 				int day, month, year;
-				cout << "Введите дату - ";
-				cin >> day;
-				cout << "Введите месяц - ";
-				cin >> month;
 				cout << "Введите год - ";
 				cin >> year;
-				PreviousDate(day, month, year);
+				cout << "Введите месяц - ";
+				cin >> month;
+				cout << "Введите дату - ";
+				cin >> day;
+				PreviousDate(year, month, day);
 
 			} break;
 		}
@@ -156,8 +155,26 @@ int MonthDays(int month, int year)
 		return 31;
 }
 
-int PreviousDate(int day, int month, int year)
+void PreviousDate(int year, int month, int day)
 {
 	
-	return 0;
+	if (day < 1 && day >31)
+	{
+		cout << "Введите правильную дату";
+	}
+	else if (day == 1)
+	{
+		if (day == 1 && month == 1)
+			year = year - 1;
+
+		if (month == 1)
+			month = 12;
+		else
+			month = month - 1;
+		day = MonthDays(month, year);
+	}
+	else
+		day = day - 1;
+
+	cout << "дата предыдущего дня: " << day << "." <<month << "." <<year << endl;
 }
